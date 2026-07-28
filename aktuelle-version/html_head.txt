@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset ="UTF-8">
+<title>Webanwendung Team07</title>
+<style>
+body {
+  font-size: 2vh;
+}
+tr {
+  height: 3vh;
+#  border-bottom-width: 1px;
+#  border-bottom-style: solid;
+}
+.mmsi {
+#  border-style: solid;
+#  border-width: 0.5px;
+  width: 10vw;
+  text-align: center;
+}
+.result1 {
+#  border-style: solid;
+#  border-width: 0.5px;
+  width: 18vw;
+  text-align: left;
+}
+.result2 {
+#  border-style: solid;
+#  border-width: 0.5px;
+  width: 80vw;
+  text-align: left;
+}
+</style>
+<!----- <link rel="stylesheet" href="/docker-step-2024-team07-web/style.css"> ----->
+</head>
+<body>
+<center>
+  <h1 style="color:teal;">
+    Navis pessundantur
+  </h1>
+  <h3>
+    Projekt von <i style="color: teal;">Team 07</i>
+  </h3>
