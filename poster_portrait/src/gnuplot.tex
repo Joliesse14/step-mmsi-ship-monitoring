@@ -1,0 +1,10 @@
+\section*{Lasttest}
+Beginnend mit der Initialisierung von 'i' wird die erste \textit{while-Schleife} gebaut. In dieser befindet sich eine zweite \textit{while-read-Schleife} mit der Iteration 'i'. Innerhalb dieser wird die Webanwendung gecurlt mit der initialisierten Variable 'j' anstelle der MMSI. Dies wird umgelenkt in /dev/null und in den Hintergrund gelegt. Dann wird die Variable 'pid' des gerade gestarteten \textit{curls} festgelegt. Danach wird die Überprüfung der Auslastungswerte von Docker begonnen, indem die letzte Zeile mit \textit{tail -n 1} ausgegeben und die Trennzeichen durch ein Semikolon ersetzt werden. Die Werte werden dann umgeleitet in eine csv-Datei. Anschließend wird gewartet bis der aktuelle Curl-Prozess beendet ist und 'i' um eins erhöht. Zuletzt werden die Inhalte der csv-Datei nummeriert und das Semikolon dafür als Trennzeichen festgelegt. Führende Leerzeichen werden mithilfe von \textit{sed} gelöscht und schießlich wird dies dann in eine entgültige csv-Datei geschrieben.
+\\
+Die Auslastung am Beispiel von 50 Iterationen wurde dann mit dem Programm \textit{Gnuplot} visualisiert.
+
+\\
+\\
+\vspace{+20pt}
+\includegraphics[width=\linewidth]{/home/step-2024-team07/lasttest.png}
+\captionof{figure}{Lasttest 50 Iterationen}

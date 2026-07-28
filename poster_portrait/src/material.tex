@@ -1,0 +1,28 @@
+\section*{Skripte}
+\subsection*{Watcher}
+Mit dem Watcher kann geprüft werden, ob die Webanwendung stabil ausgeführt wird und, sofern notwendig, neu gestartet werden kann.
+\\
+Zu Beginn wurde mit der Initialisierung der Variable 'last' und 'now' mit \textit{Kommadosubstitution} sowie bei 'now' mit \textit{wc -l} gearbeitet. Danach wurde die Datei 'last.txt' mit 'now' überschrieben. Dies ermöglicht die erneute Ausführung der folgenden \textit{if-Bedingung}. In der \textit{if-Bedingung} wurde die Variable 'last' mit dem aktuellsten Stand der ausgelesenen Daten von \textit{rhodes} in 'now' verglichen. Wenn die Zeilenanzahl gleich ist, wird der Prozess zum Auslesen von \textit{rhodes} abgebrochen und neu gestartet. Dabei wird dann die Prozess-ID in eine Variable 'ncatpid' gespeichert und mit \textit{echo} in eine weitere Datei gespeichert, um es bei erneuten Vorkommen wiederholen zu können. Schließlich beendet sich der Prozess des Watchers von selbst.
+
+\subsection*{Sicherung}
+Die 'aktuelle-version'der Anwendung wird in ein tar-Archiv gebündelt und in ein erstelltes Verzeichnis für die voherigen Versionen der Anwendung verschoben. 
+
+\vspace{-20pt}
+\begin{code}{Wiederherstellung Backup}{Backup}
+  \begin{minted}{bash}
+    ls -d -p *.tar | grep -v /
+    echo "gib den name des gewünschten backups ein oder nichts, falls keins gewünscht ist:"
+    read backup
+    if test -f "$backup"; then
+    echo "stelle wieder her: $backup"
+    mkdir backup_$backup
+    tar -xvf "$backup"
+    mv aktuelle-version/* ./backup_$backup
+    rm -r aktuelle-version
+  echo "Wiederherstellung fertig"
+  \end{minted}
+\end{code}
+
+
+Dann beginnt die mögliche Wiederherstellung (s. Listing~\ref{Backup}) einer vorherigen Version.
+Mit \textit{ls} werden bestehende tar-Archive angezeigt und fordern dann den User auf, wenn gewünscht, ein Backup anzugegeben. Wenn dies der Fall ist und eins angegeben wurde, wird mit einer \textit{if-Bedingung} getestet, ob ein solches Archiv existiert. Ist die Bedingung erfüllt, wird ein Verzeichnis mit den Namen des Backups erstellt, bevor es selber entpackt wird. Die Dateien der enpackten Versionen werden dann in das erstellte Verzeichnis verschoben und das somit leere 'aktuelle-version'-Verzeichnis entfernt.

@@ -1,0 +1,12 @@
+\section*{Webanwendung}
+\includegraphics[width=\linewidth]{/var/www/html/step-2024-team07/latex_vorlagen-1.5/poster_portrait/src/abbildungen/Angepasst_rhodes_.png}
+\captionof{figure}{Interaktion Webanwendung}
+\subsection*{mmsi.sh}
+Als erstes wurde der Zeilenleser gebaut, um Daten von \textit{rhodes} abzurufen und diese in eine csv-Datei umzuleiten.
+Danach wurde die Umgebung der Anwendung erstellt. Hierfür wurden Vorlagen für das Html-Gerüst (head, end) entwickelt worden, um diese immer wieder abrufen zu können.
+Dann wurde die Tabelle geöffnet, in der die Daten aufgeführt werden sollen. Die Daten sind mit \textit{cat} aus der csv-Datei gezogen worden und mit \textit{cut, uniq} und \textit{sort} bearbeitet.
+Durch eine \textit{while-read-Schleife} sind die Daten in die Tabelle eingefügt worden. Hiernach ist die Nummer der MMSI als Verlinkung genutzt worden, um es in einem weiteren Skript als \textit{QUERY\_STRING} benutzten zu können. Anschließend ist die Tabelle geschlossen und am Ende der Html durch die vorgefertigte Text-Datei mit \textit{cat} ausgeben worden.
+
+\subsection*{result.sh}
+Anfangs wird wieder das Html-Gerüst genutzt, um die Seite zu beginnen. Die Variable 'schiff' wurde mit \textit{Kommandosubstitution} initialisert, in der der  \textit{QUERY\_STRING} mit \textit{cut} aufgeteilt wurde, um so \textit{nur} die Nummer der MMSI zu deklarieren.
+Danach wurde die \textit{while-read-schleife} mit den Daten, die der Zeilenleser über \textit{rhodes} empfangen hat, erstellt und teilt diese in vier 'Spalten' auf, wobei '|' als Trennzeichen genutzt wurde. Danach wurde die Variable 'mmsi' mit der Variable 'schiff' durch eine \textit{if-Bedingung} verglichen. Sofern diese erfüllt ist werden die gelesenen Daten in eine Tablle eingefügt. Zum Schluss wurde die Tabelle dann geschlossen. Wie auch schon wie im voherigen Skript wurde die Html mit der Vorlage beendet.
